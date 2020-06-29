@@ -20,6 +20,7 @@ public class GlobalExceptionHandle {
 	@ExceptionHandler(value = Exception.class)
 	@ResponseBody
 	public <T> BaseResult<T> handle(Exception e) {
+		log.error("errorMessage:{},cause:{}",e.getMessage(),e);
 		if (e instanceof BaseException) {
 			Integer code = 104;
 			BaseException exception = (BaseException) e;

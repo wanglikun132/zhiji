@@ -18,6 +18,10 @@ public class IndexController {
 
 	@GetMapping(value = "/hello")
 	public String index(){
+//		//异常返回拦截测试
+//		int a = 4/0;
 		return "hello, world";
 	}
+
+
 }

@@ -1,7 +1,6 @@
 package com.likun.zhiji.model;
 
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiResponse;
 import lombok.Data;
 
 /**
