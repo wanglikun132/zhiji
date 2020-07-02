@@ -16,7 +16,6 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <java.home>/usr/local/jdk1.8/jre</java.home>
         <docker.image.prefix>zhiji</docker.image.prefix>
     </properties>
 
