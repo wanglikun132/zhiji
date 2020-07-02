@@ -1,0 +1,16 @@
+server:
+#  配置项目启动端口号
+  port: 8888
+
+#是否激活 swagger true or false
+swagger:
+  enable: true
+
+
+spring:
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://121.196.126.122:3307/zhiji_test?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
