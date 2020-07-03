@@ -1,7 +1,6 @@
 package com.likun.zhiji.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.internal.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,7 +26,6 @@ public abstract class BaseRequest implements Serializable {
 	 * app唯一标识
 	 */
 	@ApiModelProperty(value = "客户端唯一标识",required = true,example = "立坤测试app")
-	@NotNull
 	private String appName;
 
 	@ApiModelProperty(value = "请求时间")
