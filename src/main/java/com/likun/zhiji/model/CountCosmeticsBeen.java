@@ -4,6 +4,10 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 汪立坤
@@ -17,69 +21,82 @@ public class CountCosmeticsBeen implements Serializable {
 
 	private BigDecimal dijiatingprice = new BigDecimal(0) ;
 	private BigDecimal diJiaTingCost = new BigDecimal(0);
+    private BigDecimal diJiaTingPromotion = new BigDecimal(0);
+    private BigDecimal diJiaTingSample = new BigDecimal(0);
+
 	private BigDecimal RNWHuFaJingYouPrice = new BigDecimal(0);
 	private BigDecimal RNWHuFaJingYouCost = new BigDecimal(0);
+    private BigDecimal RNWHuFaJingYouPromotion = new BigDecimal(0);
+    private BigDecimal RNWHuFaJingYouSample = new BigDecimal(0);
+
 	private BigDecimal RNWShuiYangPrice = new BigDecimal(0);
 	private BigDecimal RNWShuiYangCost = new BigDecimal(0);
+    private BigDecimal RNWShuiYangPromotion = new BigDecimal(0);
+    private BigDecimal RNWShuiYangSample = new BigDecimal(0);
+
 	private BigDecimal RNWDongMoPrice = new BigDecimal(0);
 	private BigDecimal RNWDongMoCost = new BigDecimal(0);
+    private BigDecimal RNWDongMoPromotion = new BigDecimal(0);
+    private BigDecimal RNWDongMoSample = new BigDecimal(0);
+
+
 	private BigDecimal yuanCengPrice = new BigDecimal(0);
 	private BigDecimal yuanCengCost = new BigDecimal(0);
+    private BigDecimal yuanCengPromotion = new BigDecimal(0);
+    private BigDecimal yuanCengSample = new BigDecimal(0);
+
+
 	private BigDecimal aiYishenPrice = new BigDecimal(0);
 	private BigDecimal aiYishenCost = new BigDecimal(0);
+    private BigDecimal aiYishenPromotion = new BigDecimal(0);
+    private BigDecimal aiYishenSample = new BigDecimal(0);
+
 	private BigDecimal hushoushuangPrice = new BigDecimal(0);
 	private BigDecimal hushoushuangCost = new BigDecimal(0);
+    private BigDecimal hushoushuangPromotion = new BigDecimal(0);
+    private BigDecimal hushoushuangSample = new BigDecimal(0);
+
 	private BigDecimal moshagaoPrice = new BigDecimal(0);
 	private BigDecimal moshagaoCost = new BigDecimal(0);
+    private BigDecimal moshagaoPromotion = new BigDecimal(0);
+    private BigDecimal moshagaoSample = new BigDecimal(0);
+
 	private BigDecimal shengtiruPrice = new BigDecimal(0);
 	private BigDecimal shengtiruCost = new BigDecimal(0);
+    private BigDecimal shengtiruPromotion = new BigDecimal(0);
+    private BigDecimal shengtiruSample = new BigDecimal(0);
+
 	private BigDecimal xifashuiPrice = new BigDecimal(0);
 	private BigDecimal xifashuiCost = new BigDecimal(0);
+    private BigDecimal xifashuiPromotion = new BigDecimal(0);
+    private BigDecimal xifashuiSample = new BigDecimal(0);
+
 	private BigDecimal JMPrice = new BigDecimal(0);
 	private BigDecimal JMCost = new BigDecimal(0);
+    private BigDecimal JMPromotion = new BigDecimal(0);
+    private BigDecimal JMSample = new BigDecimal(0);
+
 	private BigDecimal othersPrice = new BigDecimal(0);
 	private BigDecimal othersCost = new BigDecimal(0);
+    private BigDecimal othersPromotion = new BigDecimal(0);
+    private BigDecimal othersSample = new BigDecimal(0);
+
 	private BigDecimal qujiaozhiPrice = new BigDecimal(0);
 	private BigDecimal qujiaozhiCost = new BigDecimal(0);
+    private BigDecimal qujiaozhiPromotion = new BigDecimal(0);
+    private BigDecimal qujiaozhiSample = new BigDecimal(0);
+
 	private BigDecimal AHCPrice = new BigDecimal(0);
 	private BigDecimal AHCCost = new BigDecimal(0);
+    private BigDecimal AHCPromotion = new BigDecimal(0);
+    private BigDecimal AHCSample = new BigDecimal(0);
+
 	private BigDecimal lanzhiPrice = new BigDecimal(0);
 	private BigDecimal lanzhiCost = new BigDecimal(0);
+    private BigDecimal lanzhiPromotion = new BigDecimal(0);
+    private BigDecimal lanzhiSample = new BigDecimal(0);
 
 	public CountCosmeticsBeen() {
-	}
-
-	public CountCosmeticsBeen(BigDecimal dijiatingprice, BigDecimal diJiaTingCost, BigDecimal RNWHuFaJingYouPrice, BigDecimal RNWHuFaJingYouCost, BigDecimal RNWShuiYangPrice, BigDecimal RNWShuiYangCost, BigDecimal RNWDongMoPrice, BigDecimal RNWDongMoCost, BigDecimal yuanCengPrice, BigDecimal yuanCengCost, BigDecimal aiYishenPrice, BigDecimal aiYishenCost, BigDecimal hushoushuangPrice, BigDecimal hushoushuangCost, BigDecimal moshagaoPrice, BigDecimal moshagaoCost, BigDecimal shengtiruPrice, BigDecimal shengtiruCost, BigDecimal xifashuiPrice, BigDecimal xifashuiCost, BigDecimal JMPrice, BigDecimal JMCost, BigDecimal othersPrice, BigDecimal othersCost, BigDecimal qujiaozhiPrice, BigDecimal qujiaozhiCost, BigDecimal AHCPrice, BigDecimal AHCCost, BigDecimal lanzhiPrice, BigDecimal lanzhiCost) {
-		this.dijiatingprice = dijiatingprice;
-		this.diJiaTingCost = diJiaTingCost;
-		this.RNWHuFaJingYouPrice = RNWHuFaJingYouPrice;
-		this.RNWHuFaJingYouCost = RNWHuFaJingYouCost;
-		this.RNWShuiYangPrice = RNWShuiYangPrice;
-		this.RNWShuiYangCost = RNWShuiYangCost;
-		this.RNWDongMoPrice = RNWDongMoPrice;
-		this.RNWDongMoCost = RNWDongMoCost;
-		this.yuanCengPrice = yuanCengPrice;
-		this.yuanCengCost = yuanCengCost;
-		this.aiYishenPrice = aiYishenPrice;
-		this.aiYishenCost = aiYishenCost;
-		this.hushoushuangPrice = hushoushuangPrice;
-		this.hushoushuangCost = hushoushuangCost;
-		this.moshagaoPrice = moshagaoPrice;
-		this.moshagaoCost = moshagaoCost;
-		this.shengtiruPrice = shengtiruPrice;
-		this.shengtiruCost = shengtiruCost;
-		this.xifashuiPrice = xifashuiPrice;
-		this.xifashuiCost = xifashuiCost;
-		this.JMPrice = JMPrice;
-		this.JMCost = JMCost;
-		this.othersPrice = othersPrice;
-		this.othersCost = othersCost;
-		this.qujiaozhiPrice = qujiaozhiPrice;
-		this.qujiaozhiCost = qujiaozhiCost;
-		this.AHCPrice = AHCPrice;
-		this.AHCCost = AHCCost;
-		this.lanzhiPrice = lanzhiPrice;
-		this.lanzhiCost = lanzhiCost;
 	}
 
 	public static long getSerialVersionUID() {
@@ -325,4 +342,249 @@ public class CountCosmeticsBeen implements Serializable {
 	public void setLanzhiCost(BigDecimal lanzhiCost) {
 		this.lanzhiCost = getLanzhiCost().add(lanzhiCost);
 	}
+
+    public BigDecimal getDiJiaTingPromotion() {
+        return diJiaTingPromotion;
+    }
+
+    public void setDiJiaTingPromotion(BigDecimal diJiaTingPromotion) {
+        this.diJiaTingPromotion = getDiJiaTingPromotion().add(diJiaTingPromotion);
+    }
+
+    public BigDecimal getDiJiaTingSample() {
+        return diJiaTingSample;
+    }
+
+    public void setDiJiaTingSample(BigDecimal diJiaTingSample) {
+        this.diJiaTingSample = getDiJiaTingSample().add(diJiaTingSample);
+    }
+
+    public BigDecimal getRNWHuFaJingYouPromotion() {
+        return RNWHuFaJingYouPromotion;
+    }
+
+    public void setRNWHuFaJingYouPromotion(BigDecimal RNWHuFaJingYouPromotion) {
+        this.RNWHuFaJingYouPromotion = getRNWHuFaJingYouPromotion().add(RNWHuFaJingYouPromotion);
+    }
+
+    public BigDecimal getRNWHuFaJingYouSample() {
+        return RNWHuFaJingYouSample;
+    }
+
+    public void setRNWHuFaJingYouSample(BigDecimal RNWHuFaJingYouSample) {
+        this.RNWHuFaJingYouSample = getRNWHuFaJingYouSample().add(RNWHuFaJingYouSample);
+    }
+
+    public BigDecimal getRNWShuiYangPromotion() {
+        return RNWShuiYangPromotion;
+    }
+
+    public void setRNWShuiYangPromotion(BigDecimal RNWShuiYangPromotion) {
+        this.RNWShuiYangPromotion = getRNWShuiYangPromotion().add(RNWShuiYangPromotion);
+    }
+
+    public BigDecimal getRNWShuiYangSample() {
+        return RNWShuiYangSample;
+    }
+
+    public void setRNWShuiYangSample(BigDecimal RNWShuiYangSample) {
+        this.RNWShuiYangSample = getRNWShuiYangSample().add(RNWShuiYangSample);
+    }
+
+    public BigDecimal getRNWDongMoPromotion() {
+        return RNWDongMoPromotion;
+    }
+
+    public void setRNWDongMoPromotion(BigDecimal RNWDongMoPromotion) {
+        this.RNWDongMoPromotion = getRNWDongMoPromotion().add(RNWDongMoPromotion);
+    }
+
+    public BigDecimal getRNWDongMoSample() {
+        return RNWDongMoSample;
+    }
+
+    public void setRNWDongMoSample(BigDecimal RNWDongMoSample) {
+        this.RNWDongMoSample = getRNWDongMoSample().add(RNWDongMoSample);
+    }
+
+    public BigDecimal getYuanCengPromotion() {
+        return yuanCengPromotion;
+    }
+
+    public void setYuanCengPromotion(BigDecimal yuanCengPromotion) {
+        this.yuanCengPromotion = getYuanCengPromotion().add(yuanCengPromotion);
+    }
+
+    public BigDecimal getYuanCengSample() {
+        return yuanCengSample;
+    }
+
+    public void setYuanCengSample(BigDecimal yuanCengSample) {
+        this.yuanCengSample = getYuanCengSample().add(yuanCengSample);
+    }
+
+    public BigDecimal getAiYishenPromotion() {
+        return aiYishenPromotion;
+    }
+
+    public void setAiYishenPromotion(BigDecimal aiYishenPromotion) {
+        this.aiYishenPromotion = getAiYishenPromotion().add(aiYishenPromotion);
+    }
+
+    public BigDecimal getAiYishenSample() {
+        return aiYishenSample;
+    }
+
+    public void setAiYishenSample(BigDecimal aiYishenSample) {
+        this.aiYishenSample = getAiYishenSample().add(aiYishenSample);
+    }
+
+    public BigDecimal getHushoushuangPromotion() {
+        return hushoushuangPromotion;
+    }
+
+    public void setHushoushuangPromotion(BigDecimal hushoushuangPromotion) {
+        this.hushoushuangPromotion = getHushoushuangPromotion().add(hushoushuangPromotion);
+    }
+
+    public BigDecimal getHushoushuangSample() {
+        return hushoushuangSample;
+    }
+
+    public void setHushoushuangSample(BigDecimal hushoushuangSample) {
+        this.hushoushuangSample = getHushoushuangSample().add(hushoushuangSample);
+    }
+
+    public BigDecimal getMoshagaoPromotion() {
+        return moshagaoPromotion;
+    }
+
+    public void setMoshagaoPromotion(BigDecimal moshagaoPromotion) {
+        this.moshagaoPromotion = getMoshagaoPromotion().add(moshagaoPromotion);
+    }
+
+    public BigDecimal getMoshagaoSample() {
+        return moshagaoSample;
+    }
+
+    public void setMoshagaoSample(BigDecimal moshagaoSample) {
+        this.moshagaoSample = getMoshagaoSample().add(moshagaoSample);
+    }
+
+    public BigDecimal getShengtiruPromotion() {
+        return shengtiruPromotion;
+    }
+
+    public void setShengtiruPromotion(BigDecimal shengtiruPromotion) {
+        this.shengtiruPromotion = getShengtiruPromotion().add(shengtiruPromotion);
+    }
+
+    public BigDecimal getShengtiruSample() {
+        return shengtiruSample;
+    }
+
+    public void setShengtiruSample(BigDecimal shengtiruSample) {
+        this.shengtiruSample = getShengtiruSample().add(shengtiruSample);
+    }
+
+    public BigDecimal getXifashuiPromotion() {
+        return xifashuiPromotion;
+    }
+
+    public void setXifashuiPromotion(BigDecimal xifashuiPromotion) {
+        this.xifashuiPromotion = getXifashuiPromotion().add(xifashuiPromotion);
+    }
+
+    public BigDecimal getXifashuiSample() {
+        return xifashuiSample;
+    }
+
+    public void setXifashuiSample(BigDecimal xifashuiSample) {
+        this.xifashuiSample = getXifashuiSample().add(xifashuiSample);
+    }
+
+    public BigDecimal getJMPromotion() {
+        return JMPromotion;
+    }
+
+    public void setJMPromotion(BigDecimal JMPromotion) {
+        this.JMPromotion = getJMPromotion().add(JMPromotion);
+    }
+
+    public BigDecimal getJMSample() {
+        return JMSample;
+    }
+
+    public void setJMSample(BigDecimal JMSample) {
+        this.JMSample = getJMSample().add(JMSample);
+    }
+
+    public BigDecimal getOthersPromotion() {
+        return othersPromotion;
+    }
+
+    public void setOthersPromotion(BigDecimal othersPromotion) {
+        this.othersPromotion = getOthersPromotion().add(othersPromotion);
+    }
+
+    public BigDecimal getOthersSample() {
+        return othersSample;
+    }
+
+    public void setOthersSample(BigDecimal othersSample) {
+        this.othersSample = getOthersSample().add(othersSample);
+    }
+
+    public BigDecimal getQujiaozhiPromotion() {
+        return qujiaozhiPromotion;
+    }
+
+    public void setQujiaozhiPromotion(BigDecimal qujiaozhiPromotion) {
+        this.qujiaozhiPromotion = getQujiaozhiPromotion().add(qujiaozhiPromotion);
+    }
+
+    public BigDecimal getQujiaozhiSample() {
+        return qujiaozhiSample;
+    }
+
+    public void setQujiaozhiSample(BigDecimal qujiaozhiSample) {
+        this.qujiaozhiSample = getQujiaozhiSample().add(qujiaozhiSample);
+    }
+
+    public BigDecimal getAHCPromotion() {
+        return AHCPromotion;
+    }
+
+    public void setAHCPromotion(BigDecimal AHCPromotion) {
+        this.AHCPromotion = getAHCPromotion().add(AHCPromotion);
+    }
+
+    public BigDecimal getAHCSample() {
+        return AHCSample;
+    }
+
+    public void setAHCSample(BigDecimal AHCSample) {
+        this.AHCSample = getAHCSample().add(AHCSample);
+    }
+
+    public BigDecimal getLanzhiPromotion() {
+        return lanzhiPromotion;
+    }
+
+    public void setLanzhiPromotion(BigDecimal lanzhiPromotion) {
+        this.lanzhiPromotion = getLanzhiPromotion().add(lanzhiPromotion);
+    }
+
+    public BigDecimal getLanzhiSample() {
+        return lanzhiSample;
+    }
+
+    public void setLanzhiSample(BigDecimal lanzhiSample) {
+        this.lanzhiSample = getLanzhiSample().add(lanzhiSample);
+    }
+
+//    public List<Map<String,BigDecimal>> convert(){
+//        List<Map<String,BigDecimal>> list = new ArrayList<>();
+//        Map<String,BigDecimal> map = new HashMap<>();
+//    }
 }

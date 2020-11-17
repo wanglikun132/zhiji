@@ -16,33 +16,33 @@ import java.util.List;
  * @create 2020/11/17
  */
 @Service
-public class HuFaJingYouService implements CalculationStrategyService, InitializingBean {
+public class JMService implements CalculationStrategyService, InitializingBean {
 	@Override
 	public void countTotalPrice(List<Object> list, CountCosmeticsBeen countCosmeticsBeen) {
         Object totalPrice = list.get(10);
-        countCosmeticsBeen.setRNWHuFaJingYouPrice(MathUtils.getBigDecimal(totalPrice));
+        countCosmeticsBeen.setJMPrice(MathUtils.getBigDecimal(totalPrice));
 	}
 
 	@Override
 	public void countTotalCost(List<Object> list, CountCosmeticsBeen countCosmeticsBeen) {
         Object totalPrice = list.get(12);
-        countCosmeticsBeen.setRNWHuFaJingYouCost(MathUtils.getBigDecimal(totalPrice));
+        countCosmeticsBeen.setJMCost(MathUtils.getBigDecimal(totalPrice));
 	}
 
 	@Override
 	public void countTotalPromotion(List<Object> list, CountCosmeticsBeen countCosmeticsBeen) {
         Object totalPrice = list.get(12);
-        countCosmeticsBeen.setRNWHuFaJingYouPromotion(MathUtils.getBigDecimal(totalPrice));
+        countCosmeticsBeen.setJMPromotion(MathUtils.getBigDecimal(totalPrice));
 	}
 
 	@Override
 	public void countTotalSample(List<Object> list, CountCosmeticsBeen countCosmeticsBeen) {
         Object totalPrice = list.get(12);
-        countCosmeticsBeen.setRNWHuFaJingYouSample(MathUtils.getBigDecimal(totalPrice));
+        countCosmeticsBeen.setJMSample(MathUtils.getBigDecimal(totalPrice));
 	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		CalculationStrategyServiceFactory.register(0,this);
+		CalculationStrategyServiceFactory.register(9,this);
 	}
 }

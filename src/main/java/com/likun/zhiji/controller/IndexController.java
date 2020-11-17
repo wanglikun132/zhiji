@@ -1,5 +1,6 @@
 package com.likun.zhiji.controller;
 
+import com.likun.zhiji.util.ExportExcel;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ public class IndexController {
 	public String index(){
 //		//异常返回拦截测试
 //		int a = 4/0;
+        ExportExcel.testExcel();
 		return "hello, world";
 	}
 

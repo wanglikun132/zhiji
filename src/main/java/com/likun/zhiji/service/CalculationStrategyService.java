@@ -20,7 +20,7 @@ public interface CalculationStrategyService {
 	 * @param countCosmeticsBeen
 	 * @return
 	 */
-	Boolean countTotalPrice(List<Object> list, CountCosmeticsBeen countCosmeticsBeen);
+	void countTotalPrice(List<Object> list, CountCosmeticsBeen countCosmeticsBeen);
 
 	/**
 	 * 计算总成本
@@ -28,7 +28,7 @@ public interface CalculationStrategyService {
 	 * @param countCosmeticsBeen
 	 * @return
 	 */
-	Boolean countTotalCost(List<Object> list, CountCosmeticsBeen countCosmeticsBeen);
+    void countTotalCost(List<Object> list, CountCosmeticsBeen countCosmeticsBeen);
 
 	/**
 	 * 计算总促销
@@ -36,7 +36,7 @@ public interface CalculationStrategyService {
 	 * @param countCosmeticsBeen
 	 * @return
 	 */
-	Boolean countTotalPromotion(List<Object> list, CountCosmeticsBeen countCosmeticsBeen);
+    void countTotalPromotion(List<Object> list, CountCosmeticsBeen countCosmeticsBeen);
 
 	/**
 	 * 计算总样品
@@ -44,6 +44,8 @@ public interface CalculationStrategyService {
 	 * @param countCosmeticsBeen
 	 * @return
 	 */
-	Boolean countTotalSample(List<Object> list, CountCosmeticsBeen countCosmeticsBeen);
+    void countTotalSample(List<Object> list, CountCosmeticsBeen countCosmeticsBeen);
+
+
 
 }
