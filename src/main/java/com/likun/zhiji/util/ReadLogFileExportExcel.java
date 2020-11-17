@@ -36,47 +36,64 @@ public class ReadLogFileExportExcel {
 
 	public static void main(String[] args) {
 		List<Map<String,Object>> rows = new ArrayList<>();
-		List<String> list = readFileLine("E:\\ideaproject\\zhiji\\qianniu");
-		list.forEach(it->{
-			if (it.contains("登录时间")&&it.contains("用户信息")){
+		List<String> list = readFileLine("E:\\ideaproject\\zhiji\\qianniu201");
+//		list.forEach(it->{
+//			if (it.contains("登录时间")&&it.contains("用户信息")){
+//				Map<String,Object> map = new HashMap<>(16);
+//				//登录时间:Thu Nov 05 16:02:29 CST 2020
+//				String substring = it.substring(it.indexOf("登录时间:"), it.indexOf(","));
+////				System.out.println(it);
+//				//登录时间:Fri Nov 06 06:59:02 CST 2020,用户信息:
+////[ INFO ] [2020-11-05 19:11:23.509] com.joyoung.qianniu.controller.WaiterController [59] [http-nio-8701-exec-58]- 登录时间:Thu Nov 05 19:11:23 CST 2020,用户信息:Result(succ=true, ts=1604574683509, data=UserDTO(id=10214, userId=21cc14e2bc82210c23af12bf9cfd4f17, nickName=null, waiterName=丹雪, code=10104008, job=1, tel=15914751670, dealerId=15, status=0, isDel=1, opUid=7912784, gmtCreate=1602809624, gmtModified=1602809624, dealer=北京浩远中粤科技有限公司, userName=null), code=null, msg=null)
+//				String[] split = it.split("登录时间:");
+////				System.out.println(split[1]);
+//				String[] split1 = split[1].split(",用户信息:");
+////				System.out.println(split1[0]);
+////				System.out.println(split1[1]);
+//				map.put("登录时间",split1[0]);
+//				String[] split2 = split1[1].split(",");
+//				for (int i = 0;i<split2.length;i++){
+////					System.out.println(split2[i]);
+//					String[] split3 = split2[i].split("=");
+//					System.out.println(split3[0]);
+//					System.out.println(split3[1]);
+//					if (split3[1].contains("id")){
+//						map.put("id",split3[2]);
+//					}
+//					if (split3[0].contains("userId")){
+//						map.put("userId",split3[1]);
+//					}
+//					if (split3[0].contains("waiterName")){
+//						map.put("waiterName",split3[1]);
+//					}
+//					if (split3[0].contains("tel")){
+//						map.put("tel",split3[1]);
+//					}
+//					if (split3[0].contains("dealer")){
+//						map.put("dealer",split3[1]);
+//					}
+//				}
+//				rows.add(map);
+//			}
+//		});
+		list.forEach(it -> {
+
+			if (it.contains("未找到图谱数据,uri:")){
 				Map<String,Object> map = new HashMap<>(16);
-				//登录时间:Thu Nov 05 16:02:29 CST 2020
-				String substring = it.substring(it.indexOf("登录时间:"), it.indexOf(","));
-//				System.out.println(it);
-				//登录时间:Fri Nov 06 06:59:02 CST 2020,用户信息:
-//[ INFO ] [2020-11-05 19:11:23.509] com.joyoung.qianniu.controller.WaiterController [59] [http-nio-8701-exec-58]- 登录时间:Thu Nov 05 19:11:23 CST 2020,用户信息:Result(succ=true, ts=1604574683509, data=UserDTO(id=10214, userId=21cc14e2bc82210c23af12bf9cfd4f17, nickName=null, waiterName=丹雪, code=10104008, job=1, tel=15914751670, dealerId=15, status=0, isDel=1, opUid=7912784, gmtCreate=1602809624, gmtModified=1602809624, dealer=北京浩远中粤科技有限公司, userName=null), code=null, msg=null)
-				String[] split = it.split("登录时间:");
-//				System.out.println(split[1]);
-				String[] split1 = split[1].split(",用户信息:");
-//				System.out.println(split1[0]);
-//				System.out.println(split1[1]);
-				map.put("登录时间",split1[0]);
-				String[] split2 = split1[1].split(",");
-				for (int i = 0;i<split2.length;i++){
-//					System.out.println(split2[i]);
-					String[] split3 = split2[i].split("=");
-					System.out.println(split3[0]);
-					System.out.println(split3[1]);
-					if (split3[1].contains("id")){
-						map.put("id",split3[2]);
-					}
-					if (split3[0].contains("userId")){
-						map.put("userId",split3[1]);
-					}
-					if (split3[0].contains("waiterName")){
-						map.put("waiterName",split3[1]);
-					}
-					if (split3[0].contains("tel")){
-						map.put("tel",split3[1]);
-					}
-					if (split3[0].contains("dealer")){
-						map.put("dealer",split3[1]);
-					}
-				}
+				System.out.println(it);
+				map.put("查询参数","http"+it.substring(it.lastIndexOf(":")));
+				map.put("查询目标","根据型号名称进行查询");
+				rows.add(map);
+			}
+			if (it.contains("图谱实体数据查询失败,name:")){
+				Map<String,Object> map = new HashMap<>(16);
+				String[] split = it.split(",");
+				map.put("查询参数",split[1].split(":")[1]);
+				map.put("查询目标",split[2].split(":")[1]);
 				rows.add(map);
 			}
 		});
-		exportExcel(rows,"e:/87客服登录日志.xlsx");
+		exportExcel(rows,"e:/食谱视频查询失败日志.xlsx");
 	}
 
 }
