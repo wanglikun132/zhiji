@@ -21,6 +21,9 @@ public class OthersService implements CalculationStrategyService, InitializingBe
 	public void countTotalPrice(List<Object> list, CountCosmeticsBeen countCosmeticsBeen) {
         Object totalPrice = list.get(10);
         countCosmeticsBeen.setOthersPrice(MathUtils.getBigDecimal(totalPrice));
+		if (list.get(6).equals("可乐")) {
+			countCosmeticsBeen.setKLothersPrice(MathUtils.getBigDecimal(totalPrice));
+		}
 	}
 
 	@Override

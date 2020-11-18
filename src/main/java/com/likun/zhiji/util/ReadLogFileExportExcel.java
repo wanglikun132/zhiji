@@ -2,10 +2,16 @@ package com.likun.zhiji.util;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.io.file.FileReader;
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStream;
 import java.util.*;
 
 /**
@@ -25,13 +31,49 @@ public class ReadLogFileExportExcel {
 
 	public static void exportExcel(List<Map<String,Object>> rows,String filePath){
 		// 通过工具类创建writer
-		ExcelWriter writer = ExcelUtil.getWriter(filePath);
+		ExcelWriter writer = ExcelUtil.getWriter(filePath,"产品分析");
 		// 合并单元格后的标题行，使用默认标题样式
-//		writer.merge(rows.size() - 1, "客服登录统计");
+		writer.merge(rows.get(0).size() - 1, "产品分布表");
+//		writer.passCurrentRow();
 		// 一次性写出内容，使用默认样式，强制输出标题
 		writer.write(rows, true);
 		// 关闭writer，释放内存
 		writer.close();
+	}
+
+//	public static void newExportExcel(List<Map<String,Object>> rows) throws Exception{
+//		HttpServletResponse resp = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+//		resp.setHeader("Content-Disposition", "attachment;Filename=" + System.currentTimeMillis() + ".xls");
+//		// 通过工具类创建writer
+//		ExcelWriter writer = ExcelUtil.getWriter();
+//		// 合并单元格后的标题行，使用默认标题样式
+//		writer.merge(rows.get(0).size() - 1, "产品分布表");
+////		writer.passCurrentRow();
+//		// 一次性写出内容，使用默认样式，强制输出标题
+//		writer.write(rows, true);
+//		writer.flush(resp.getOutputStream());
+//		// 关闭writer，释放内存
+//		writer.close();
+//	}
+
+	public static void newExportExcel(List<Map<String,Object>> rows) throws Exception{
+		HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+		// 通过工具类创建writer，默认创建xls格式
+		ExcelWriter writer = ExcelUtil.getWriter();
+// 一次性写出内容，使用默认样式，强制输出标题
+		writer.write(rows, true);
+//out为OutputStream，需要写出到的目标流
+
+//response为HttpServletResponse对象
+		response.setContentType("application/vnd.ms-excel;charset=utf-8");
+//test.xls是弹出下载对话框的文件名，不能为中文，中文请自行编码
+		response.setHeader("Content-Disposition","attachment;filename=产品分析.xls");
+		ServletOutputStream out=response.getOutputStream();
+		writer.flush(out, true);
+// 关闭writer，释放内存
+		writer.close();
+//此处记得关闭输出Servlet流
+		IoUtil.close(out);
 	}
 
 	public static void main(String[] args) {

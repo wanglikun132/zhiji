@@ -21,6 +21,9 @@ public class LanZhiService implements CalculationStrategyService, InitializingBe
 	public void countTotalPrice(List<Object> list, CountCosmeticsBeen countCosmeticsBeen) {
         Object totalPrice = list.get(10);
         countCosmeticsBeen.setLanzhiPrice(MathUtils.getBigDecimal(totalPrice));
+		if (list.get(6).equals("可乐")) {
+			countCosmeticsBeen.setKLlanzhiPrice(MathUtils.getBigDecimal(totalPrice));
+		}
 	}
 
 	@Override

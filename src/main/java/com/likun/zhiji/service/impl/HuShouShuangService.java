@@ -21,6 +21,9 @@ public class HuShouShuangService implements CalculationStrategyService, Initiali
 	public void countTotalPrice(List<Object> list, CountCosmeticsBeen countCosmeticsBeen) {
         Object totalPrice = list.get(10);
         countCosmeticsBeen.setHushoushuangPrice(MathUtils.getBigDecimal(totalPrice));
+		if (list.get(6).equals("可乐")) {
+			countCosmeticsBeen.setKLhushoushuangPrice(MathUtils.getBigDecimal(totalPrice));
+		}
 	}
 
 	@Override

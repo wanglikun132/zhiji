@@ -21,6 +21,9 @@ public class HuFaJingYouService implements CalculationStrategyService, Initializ
 	public void countTotalPrice(List<Object> list, CountCosmeticsBeen countCosmeticsBeen) {
         Object totalPrice = list.get(10);
         countCosmeticsBeen.setRNWHuFaJingYouPrice(MathUtils.getBigDecimal(totalPrice));
+		if (list.get(6).equals("可乐")) {
+			countCosmeticsBeen.setKLRNWHuFaJingYouPrice(MathUtils.getBigDecimal(totalPrice));
+		}
 	}
 
 	@Override

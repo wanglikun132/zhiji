@@ -21,6 +21,9 @@ public class YuanCenService implements CalculationStrategyService, InitializingB
 	public void countTotalPrice(List<Object> list, CountCosmeticsBeen countCosmeticsBeen) {
         Object totalPrice = list.get(10);
         countCosmeticsBeen.setYuanCengPrice(MathUtils.getBigDecimal(totalPrice));
+		if (list.get(6).equals("可乐")) {
+			countCosmeticsBeen.setKLyuanCengPrice(MathUtils.getBigDecimal(totalPrice));
+		}
 	}
 
 	@Override

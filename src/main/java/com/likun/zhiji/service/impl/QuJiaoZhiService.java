@@ -21,6 +21,9 @@ public class QuJiaoZhiService implements CalculationStrategyService, Initializin
 	public void countTotalPrice(List<Object> list, CountCosmeticsBeen countCosmeticsBeen) {
         Object totalPrice = list.get(10);
         countCosmeticsBeen.setQujiaozhiPrice(MathUtils.getBigDecimal(totalPrice));
+		if (list.get(6).equals("可乐")) {
+			countCosmeticsBeen.setKLqujiaozhiPrice(MathUtils.getBigDecimal(totalPrice));
+		}
 	}
 
 	@Override

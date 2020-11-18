@@ -21,6 +21,9 @@ public class MoShaGaoService implements CalculationStrategyService, Initializing
 	public void countTotalPrice(List<Object> list, CountCosmeticsBeen countCosmeticsBeen) {
         Object totalPrice = list.get(10);
         countCosmeticsBeen.setMoshagaoPrice(MathUtils.getBigDecimal(totalPrice));
+		if (list.get(6).equals("可乐")) {
+			countCosmeticsBeen.setKLmoshagaoPrice(MathUtils.getBigDecimal(totalPrice));
+		}
 	}
 
 	@Override

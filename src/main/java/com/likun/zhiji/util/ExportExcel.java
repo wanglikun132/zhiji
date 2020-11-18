@@ -8,9 +8,11 @@ import com.google.common.util.concurrent.AtomicDouble;
 import com.likun.zhiji.model.CountCosmeticsBeen;
 import com.likun.zhiji.service.CalculationStrategyService;
 import com.likun.zhiji.service.CalculationStrategyServiceFactory;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -211,7 +213,7 @@ public class ExportExcel {
 
 	}
 
-	public static void testExcel(){
+	public static void testExcel() throws Exception{
 
 //        ExcelReader reader = ExcelUtil.getReader("/Users/wlk/Documents/myproject/zhiji/11.1-11.16.xlsx", 1);
 //        List<List<Object>> readAll = reader.read();
@@ -255,7 +257,8 @@ public class ExportExcel {
         if (Objects.nonNull(countCosmeticsBeen)){
             System.out.println(countCosmeticsBeen.getRNWHuFaJingYouPrice());
             System.out.println(countCosmeticsBeen.toString());
-            exportExcel(countCosmeticsBeen);
+//            exportExcel(countCosmeticsBeen);
+			newExportExcel(countCosmeticsBeen);
         }
 
 
@@ -376,7 +379,8 @@ public class ExportExcel {
     }
 
     public static void countExcel(int page,CountCosmeticsBeen countCosmeticsBeen){
-        ExcelReader reader = ExcelUtil.getReader("/Users/wlk/Documents/myproject/zhiji/11.1-11.16.xlsx", page);
+//        ExcelReader reader = ExcelUtil.getReader("/Users/wlk/Documents/myproject/zhiji/11.1-11.16.xlsx", page);
+		ExcelReader reader = ExcelUtil.getReader("E:\\ideaproject\\zhiji\\11.1-11.16.xlsx", page);
         List<List<Object>> readAll = reader.read();
 	    if (page == 1){
             for (int a = 1; a < readAll.size(); a++){
@@ -500,6 +504,120 @@ public class ExportExcel {
         writer.close();
 
     }
+
+	public static void newExportExcel(CountCosmeticsBeen countCosmeticsBeen) throws Exception{
+		List<Map<String, Object>> convert = countCosmeticsBeen.convert();
+		ReadLogFileExportExcel.newExportExcel(convert);
+	}
+
+
+
+
+	public static void exportExcel(MultipartFile file) throws Exception{
+
+		CountCosmeticsBeen countCosmeticsBeen = new CountCosmeticsBeen();
+		newCountExcel(1,countCosmeticsBeen,file);
+		newCountExcel(2,countCosmeticsBeen,file);
+		newCountExcel(3,countCosmeticsBeen,file);
+		if (Objects.nonNull(countCosmeticsBeen)){
+			System.out.println(countCosmeticsBeen.getRNWHuFaJingYouPrice());
+			System.out.println(countCosmeticsBeen.toString());
+			newExportExcel(countCosmeticsBeen);
+		}
+	}
+
+
+	public static void newCountExcel(int page, CountCosmeticsBeen countCosmeticsBeen, MultipartFile file) throws Exception {
+//        ExcelReader reader = ExcelUtil.getReader("/Users/wlk/Documents/myproject/zhiji/11.1-11.16.xlsx", page);
+		ExcelReader reader = ExcelUtil.getReader(MultipartFileToFile.multipartFileToFile(file), page);
+		List<List<Object>> readAll = reader.read();
+		if (page == 1){
+			for (int a = 1; a < readAll.size(); a++){
+				Object o = readAll.get(a).get(7);
+				String productName = String.valueOf(o);
+				boolean b = productName.contains("摇滚动物园") && (productName.contains("洗发水") || productName.contains("洗发膏"));
+				int num = 0;
+				if (b){
+					CalculationStrategyService byIndex = CalculationStrategyServiceFactory.getByIndex(8);
+					byIndex.countTotalPrice(readAll.get(a),countCosmeticsBeen);
+					byIndex.countTotalCost(readAll.get(a),countCosmeticsBeen);
+					num++;
+					return;
+				}else{
+					for (int i = 0;i < keyWords.length;i++){
+						if (productName.toLowerCase().contains(keyWords[i].toLowerCase())){
+							CalculationStrategyService byIndex = CalculationStrategyServiceFactory.getByIndex(i);
+							byIndex.countTotalPrice(readAll.get(a),countCosmeticsBeen);
+							byIndex.countTotalCost(readAll.get(a),countCosmeticsBeen);
+							num++;
+							continue;
+						}
+					}
+				}
+				if (num == 0){
+					CalculationStrategyService byIndex = CalculationStrategyServiceFactory.getByIndex(-1);
+					byIndex.countTotalCost(readAll.get(a),countCosmeticsBeen);
+					byIndex.countTotalPrice(readAll.get(a),countCosmeticsBeen);
+				}
+			}
+		}
+		if (page == 2){
+			for (int a = 1; a < readAll.size(); a++){
+				Object o = readAll.get(a).get(7);
+				String productName = String.valueOf(o);
+				boolean b = productName.contains("摇滚动物园") && (productName.contains("洗发水") || productName.contains("洗发膏"));
+				int num = 0;
+				if (b){
+					CalculationStrategyService byIndex = CalculationStrategyServiceFactory.getByIndex(8);
+					byIndex.countTotalPromotion(readAll.get(a),countCosmeticsBeen);
+					num++;
+					return;
+				}else{
+					for (int i = 0;i < keyWords.length;i++){
+						if (productName.toLowerCase().contains(keyWords[i].toLowerCase())){
+							CalculationStrategyService byIndex = CalculationStrategyServiceFactory.getByIndex(i);
+							byIndex.countTotalPromotion(readAll.get(a),countCosmeticsBeen);
+							num++;
+							continue;
+						}
+					}
+				}
+				if (num == 0){
+					CalculationStrategyService byIndex = CalculationStrategyServiceFactory.getByIndex(-1);
+					byIndex.countTotalPromotion(readAll.get(a),countCosmeticsBeen);
+				}
+			}
+		}
+		if (page == 3){
+			for (int a = 1; a < readAll.size(); a++){
+				Object o = readAll.get(a).get(7);
+				String productName = String.valueOf(o);
+				boolean b = productName.contains("摇滚动物园") && (productName.contains("洗发水") || productName.contains("洗发膏"));
+				int num = 0;
+				if (b){
+					CalculationStrategyService byIndex = CalculationStrategyServiceFactory.getByIndex(8);
+					byIndex.countTotalSample(readAll.get(a),countCosmeticsBeen);
+					num++;
+					return;
+				}else{
+					for (int i = 0;i < keyWords.length;i++){
+						if (productName.toLowerCase().contains(keyWords[i].toLowerCase())){
+							CalculationStrategyService byIndex = CalculationStrategyServiceFactory.getByIndex(i);
+							byIndex.countTotalSample(readAll.get(a),countCosmeticsBeen);
+							num++;
+							continue;
+						}
+					}
+				}
+				if (num == 0){
+					CalculationStrategyService byIndex = CalculationStrategyServiceFactory.getByIndex(-1);
+					byIndex.countTotalSample(readAll.get(a),countCosmeticsBeen);
+				}
+			}
+		}
+		System.out.println(countCosmeticsBeen.getRNWHuFaJingYouPrice().setScale(2,RoundingMode.HALF_UP));
+
+	}
 
 
 }
