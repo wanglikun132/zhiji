@@ -20,7 +20,7 @@ public class IndexController {
 	public String index() throws Exception{
 //		//异常返回拦截测试
 //		int a = 4/0;
-        ExportExcel.testExcel();
+//        ExportExcel.testExcel();
 		return "hello, world";
 	}
 
